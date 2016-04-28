@@ -1,4 +1,7 @@
 # silverstripe-flashmessage
+[![Scrutinizer](https://img.shields.io/scrutinizer/g/axyr/silverstripe-flashmessage.svg)](https://scrutinizer-ci.com/g/axyr/silverstripe-flashmessage/)
+[![Packagist](https://img.shields.io/packagist/dt/axyr/silverstripe-flashmessage.svg)](https://packagist.org/packages/axyr/silverstripe-flashmessage)
+[![Packagist](https://img.shields.io/packagist/v/axyr/silverstripe-flashmessage.svg)](https://packagist.org/packages/axyr/silverstripe-flashmessage)
 
 Display simple one-time flash message with Twitter Bootstrap or Zurb Foundation markup.
 
