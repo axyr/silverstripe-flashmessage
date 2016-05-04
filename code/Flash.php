@@ -7,6 +7,7 @@
  * @method static void warning(string $message, bool $closable = null, bool $fadeOut = null)
  * @method static void danger(string $message, bool $closable = null, bool $fadeOut = null)
  * @method static void alert(string $message, bool $closable = null, bool $fadeOut = null)
+ * @method static void modal(string $message, bool $closable = null, bool $fadeOut = null)
  */
 class Flash extends ViewableData implements TemplateGlobalProvider
 {
@@ -16,6 +17,7 @@ class Flash extends ViewableData implements TemplateGlobalProvider
      */
     private static $defaults = [
         'Type'     => 'success',
+        'IsModal'  => false,
         'Closable' => true,
         'FadeOut'  => false
     ];
@@ -29,7 +31,8 @@ class Flash extends ViewableData implements TemplateGlobalProvider
         'success',
         'warning',
         'danger',
-        'alert'
+        'alert',
+        'modal'
     ];
 
     /**
@@ -104,6 +107,10 @@ class Flash extends ViewableData implements TemplateGlobalProvider
 
         if (null !== $fadeOut) {
             $data['FadeOut'] = $fadeOut;
+        }
+
+        if('modal' === $type) {
+            $data['IsModal'] = true;
         }
 
         Session::set(Flash::config()->session_name, $data);

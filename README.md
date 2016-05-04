@@ -26,6 +26,8 @@ $ composer require axyr/silverstripe-flashmessage
 ## Usage
 The FlashMessage template has all the markup and attributes so that it will play nicely with the Twitter Bootstrap and Zurb Foundation frameworks.
 
+http://getbootstrap.com/components/#alerts
+
 http://foundation.zurb.com/sites/docs/callout.html
 
 You can set a colored flash message with te following methods:
@@ -47,6 +49,12 @@ Flash::success('You cannot close me', false);
 Flash::success('I will fade out', false, true);
 ```
 
+You can also show the message in a modal window :
+
+```php
+Flash::modal('Some message');
+```
+
 ## Config
 ```
 FlashMessage:
@@ -60,6 +68,7 @@ FlashMessage:
      - warning
      - danger
      - alert
+     - modal
    template: FlashMessage
    session_name: FlashMessage
    load_javascript: true
