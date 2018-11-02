@@ -1,4 +1,11 @@
 <?php
+namespace axyr\flashmessage;
+use \SilverStripe\View\ViewableData;
+use \SilverStripe\View\TemplateGlobalProvider;
+
+use \SilverStripe\View\Requirements;
+use SilverStripe\Control\HTTPRequest;
+use SilverStripe\Core\Injector\Injector;
 
 /**
  * Class Flash
@@ -59,8 +66,7 @@ class Flash extends ViewableData implements TemplateGlobalProvider
      * @var array
      */
     protected $data = [];
-
-    /**
+ /**
      * @param array $data
      */
     public function __construct($data)
@@ -96,6 +102,7 @@ class Flash extends ViewableData implements TemplateGlobalProvider
      */
     public static function set($message, $type = 'success', $closable = null, $fadeOut = null)
     {
+
         $data = [
             'Message' => $message,
             'Type'    => $type
@@ -113,17 +120,26 @@ class Flash extends ViewableData implements TemplateGlobalProvider
             $data['IsModal'] = true;
         }
 
-        Session::set(Flash::config()->session_name, $data);
+        $request = Injector::inst()->get(HTTPRequest::class);
+        $session = $request->getSession();
+
+        $session->set(Flash::config()->session_name, $data);
+
     }
 
     /**
      * @return Flash
-     */
+   */
     public static function get()
     {
+
+        $request = Injector::inst()->get(HTTPRequest::class);
+        $session = $request->getSession();
+
         $key  = Flash::config()->session_name;
-        $data = Session::get($key);
-        Session::clear($key);
+        $data = $session->get($key);
+
+        $session->clear($key);
 
         return (new Flash($data));
     }
