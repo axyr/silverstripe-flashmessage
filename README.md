@@ -23,6 +23,8 @@ Display simple one-time flash message with Twitter Bootstrap or Zurb Foundation 
 $ composer require axyr/silverstripe-flashmessage
 ```
 
+Add the template variable `$FlashMessage` to your Page template where you wish the flash dialog to appear.
+
 ## Usage
 The FlashMessage template has all the markup and attributes so that it will play nicely with the Twitter Bootstrap and Zurb Foundation frameworks.
 
