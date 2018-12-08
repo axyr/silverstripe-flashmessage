@@ -150,9 +150,9 @@ class Flash extends ViewableData implements TemplateGlobalProvider
     public function forTemplate()
     {
         if (self::config()->load_javascript) {
-             Requirements::javascript('vendor/axyr/silverstripe-flashmessage/client/javascript/flashmessage.js');
+             Requirements::javascript('axyr/silverstripe-flashmessage: client/javascript/flashmessage.js');
         }
-        return $this->customise($this->data)->renderWith(self::config()->template);
+        return $this->renderWith(self::config()->template, $this->data);
     }
 
     /**

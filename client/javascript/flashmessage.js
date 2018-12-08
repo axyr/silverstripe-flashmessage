@@ -33,7 +33,7 @@
                 });
                 if (typeof modal == 'function') {
                     $('#FlashModal').modal('hide');
-                }else if (foundation == 'function') {
+                }else if (typeof foundation == 'function') {
                     $('#FlashModal').foundation('close');
                 }
             },2000);
